@@ -31,12 +31,12 @@ function preload() {
   vertical  = loadImage('../img/vertical.png')
 }
 
-
 let lineStartX, lineStartY;
 let drawingLine = false;
 let drawFreehand = false;
 let strokeWidth = 0.1;
-let strokeColor = "#000000"; // Initial stroke color is black
+let strokeColor = "#000000"; // Initial stroke color is black;
+let continuousDrawing = false;
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
@@ -46,16 +46,18 @@ function setup() {
 
 function draw() {
   stroke(strokeColor);
-  if (drawFreehand) {
+  if (continuousDrawing && !drawFreehand) {
+    if (drawingLine) {
+      strokeWeight(strokeWidth);
+      if (abs(mouseX - lineStartX) > abs(mouseY - lineStartY)) {
+        line(lineStartX, lineStartY, mouseX, lineStartY);
+      } else {
+        line(lineStartX, lineStartY, lineStartX, mouseY);
+      }
+    }
+  } else if (drawFreehand) {
     strokeWeight(strokeWidth);
     line(pmouseX, pmouseY, mouseX, mouseY);
-  } else if (drawingLine) {
-    strokeWeight(strokeWidth);
-    if (abs(mouseX - lineStartX) > abs(mouseY - lineStartY)) {
-      line(lineStartX, lineStartY, mouseX, lineStartY);
-    } else {
-      line(lineStartX, lineStartY, lineStartX, mouseY);
-    }
   }
 }
 
@@ -87,11 +89,13 @@ function keyPressed() {
     redraw();
   } else if (keyCode === 87) { // "W" key
     if (strokeColor === "#000000") {
-      strokeColor = "#FFFFFF"; // Change stroke color to white
+      strokeColor = "#fce2e1"; // Change stroke color to white
     } else {
       strokeColor = "#000000"; // Change stroke color to black
     }
     redraw();
+  } else if (keyCode === 81) { // "Q" key
+    continuousDrawing = !continuousDrawing;
   }
 
   // Change stroke weight using the "+" and "-" keys
