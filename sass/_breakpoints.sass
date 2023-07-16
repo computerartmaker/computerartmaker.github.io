@@ -1,0 +1,19 @@
+// 0, 640px @ 16px baseline
+=mobile
+  @media (min-width: 0rem) and (max-width: 40rem)
+    @content
+
+// 641px, 1024px @ 16px baseline
+=tablet
+  @media (min-width: 40.063rem) and (max-width: 64rem)
+    @content
+
+// 1025px, 1920px @ 16px baseline
+=laptop
+  @media (min-width: 64.063rem) and (max-width: 120rem)
+    @content
+
+// 1921px and above @ 16px baseline
+=desktop
+  @media (min-width: 120.063rem)
+    @content
