@@ -1,3 +1,6 @@
+// project is a mess due to legacy structure/code
+// needs clean up
+
 var img;
 var img2;
 var img3;
