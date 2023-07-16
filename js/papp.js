@@ -31,51 +31,54 @@ function preload() {
   vertical  = loadImage('../img/vertical.png')
 }
 
-// Straight Lines
+
 let lineStartX, lineStartY;
 let drawingLine = false;
-
+let drawFreehand = false;
+let strokeWidth = 0.1;
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  background("#fce2e1");
   imageMode(CENTER);
+  background("#fce2e1");
 }
 
 function draw() {
-
-
   if (drawingLine) {
-    const dx = mouseX - lineStartX;
-    const dy = mouseY - lineStartY;
-    const angle = atan2(dy, dx);
-    const distance = dist(lineStartX, lineStartY, mouseX, mouseY);
-
-    push();
-    translate(lineStartX, lineStartY);
-    rotate(angle);
-    image(vertical, 0, 0, distance);
-    pop();
+    if (drawFreehand) {
+      strokeWeight(strokeWidth);
+      line(pmouseX, pmouseY, mouseX, mouseY);
+    } else {
+      strokeWeight(strokeWidth);
+      if (abs(mouseX - lineStartX) > abs(mouseY - lineStartY)) {
+        line(lineStartX, lineStartY, mouseX, lineStartY);
+      } else {
+        line(lineStartX, lineStartY, lineStartX, mouseY);
+      }
+    }
   }
+}
 
-  if (keyIsPressed && keyCode === 65) { // "A" key
-    image(img11, mouseX, mouseY, 200, 200);
-  } 
-  else if (keyIsPressed && keyCode === 83) { // "S" key
-    image(img10, mouseX, mouseY, 200, 200);
-  }
+function mousePressed() {
+  lineStartX = mouseX;
+  lineStartY = mouseY;
+  drawingLine = true;
+}
+
+function mouseReleased() {
+  drawingLine = false;
 }
 
 function keyPressed() {
-  if (keyCode === 81) { // "Q" key
-    lineStartX = mouseX;
-    lineStartY = mouseY;
-    drawingLine = true;
+  if (keyCode === 65) { // "A" key
+    drawFreehand = !drawFreehand;
+    redraw();
   }
-}
 
-function keyReleased() {
-  if (keyCode === 81) { // "Q" key
-    drawingLine = false;
+   // Change stroke width using the "+" and "-" keys
+  if (keyCode === 187 || keyCode === 107) { // "+" key
+    strokeWidth += 1;
+  } else if (keyCode === 189 || keyCode === 109) { // "-" key
+    strokeWidth = max(1, strokeWidth - 1);
   }
 }
