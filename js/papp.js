@@ -35,50 +35,35 @@ function preload() {
 let lineStartX, lineStartY;
 let drawingLine = false;
 
+
 function setup() {
   createCanvas(windowWidth, windowHeight);
   background("#fce2e1");
-  // background(252,247,4);
+  imageMode(CENTER);
 }
 
 function draw() {
+
+
   if (drawingLine) {
-    line(lineStartX, lineStartY, mouseX, mouseY);
+    const dx = mouseX - lineStartX;
+    const dy = mouseY - lineStartY;
+    const angle = atan2(dy, dx);
+    const distance = dist(lineStartX, lineStartY, mouseX, mouseY);
+
+    push();
+    translate(lineStartX, lineStartY);
+    rotate(angle);
+    image(vertical, 0, 0, distance);
+    pop();
   }
 
-  // stroke(0);
-  // strokeWeight(random(1,2))
-if (keyIsPressed && keyCode === 65) { // "A" key
-    image(img11, mouseX, mouseY, 200,200);
+  if (keyIsPressed && keyCode === 65) { // "A" key
+    image(img11, mouseX, mouseY, 200, 200);
   } 
   else if (keyIsPressed && keyCode === 83) { // "S" key
-    image(img10, mouseX, mouseY, 200,200);
+    image(img10, mouseX, mouseY, 200, 200);
   }
-  else {
-    image(vertical, mouseX, mouseY);
-  }
-  // fill(0);
-  // stroke(random(1,255))
-  // strokeWeight(random(1,4))
-  // rect(random(mouseX), random(mouseY), 5, 5);
-  // fill(255);
-  // strokeWeight(random(1,3))
-  // rect(random(mouseX), random(mouseY), 10, 10);
-  // fill(0,0,255);
-  // strokeWeight(random(1))
-  // rect(50, 50, 50, 50);
-  
-
-  // strokeWeight(random(1))
-  // rect(random(mouseX), random(mouseY), 35, 35);
-
-
-  // imageMode(CENTER);
-  // image(img, mouseX, mouseX);
-  // image(img2, mouseX, mouseX);
-  // image(img3, mouseX, mouseY);
-  // image(img4, mouseX, mouseY, 500,500);
-  // image(img4, mouseX, mouseY, 500,500);
 }
 
 function keyPressed() {
@@ -94,7 +79,3 @@ function keyReleased() {
     drawingLine = false;
   }
 }
-
-// function windowResized() {
-//   resizeCanvas(windowWidth, windowHeight);
-// }
