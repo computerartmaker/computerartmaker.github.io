@@ -1,3 +1,6 @@
+
+
+
 let texts = [];
 let isTyping = false;
 let textInput = '';
@@ -5,24 +8,31 @@ let textX, textY;
 let cursorVisible = false;
 let cursorTimer;
 let typingTimer;
+let lineHeight;
+let textAlignY;
+let cursorLineWeight = 4;
 
-function setup() {
-  createCanvas(windowWidth, windowHeight);
-
+function preload() {
   // Load text from localStorage if available
   if (localStorage.getItem('textInput')) {
     texts = JSON.parse(localStorage.getItem('textInput'));
   }
+}
+
+function setup() {
+  createCanvas(windowWidth, windowHeight);
 
   // Detect key press to capture text input
   document.addEventListener('keydown', handleKeyDown);
   document.addEventListener('keypress', handleKeyPress);
 
   textFont('monospace');
+  lineHeight = 20; // Adjust line height as desired
+  textAlignY = TOP; // Adjust vertical text alignment as desired
 }
 
 function mousePressed() {
-  if (isTyping) {
+  if (isTyping && textInput.trim() !== '') {
     let textObj = {
       text: textInput,
       x: textX,
@@ -41,7 +51,7 @@ function mousePressed() {
   isTyping = true;
 
   // Start the cursor blinking timer
-  cursorTimer = setInterval(toggleCursor, 1000);
+  cursorTimer = setInterval(toggleCursor, 500);
 
   // Start the typing timeout timer
   clearTimeout(typingTimer);
@@ -68,6 +78,16 @@ function handleKeyPress(event) {
 
       // Append the current character to the text input
       textInput += event.key;
+
+      // Restart the typing timeout timer
+      clearTimeout(typingTimer);
+      typingTimer = setTimeout(finishTyping, 10000);
+    } else if (event.key === 'Enter') {
+      // Prevent line break when Enter is pressed
+      event.preventDefault();
+
+      // Add a line break to the text input
+      textInput += '\n';
 
       // Restart the typing timeout timer
       clearTimeout(typingTimer);
@@ -105,23 +125,33 @@ function draw() {
     let textObj = texts[i];
     fill(0);
     textSize(16);
-    textAlign(LEFT, TOP);
+    textAlign(LEFT, textAlignY);
     text(textObj.text, textObj.x, textObj.y);
   }
 
   if (isTyping) {
     fill(0);
     textSize(16);
-    textAlign(LEFT, TOP);
-    text(textInput, textX, textY);
+    textAlign(LEFT, textAlignY);
 
-    // Draw the cursor
-    if (cursorVisible) {
-      let cursorX = textX + textWidth(textInput);
-      let cursorY = textY;
-      stroke(0);
-      strokeWeight(2);
-      line(cursorX, cursorY, cursorX, cursorY + 20);
+    let lines = textInput.split('\n');
+    let totalHeight = lines.length * lineHeight;
+
+    for (let i = 0; i < lines.length; i++) {
+      let line = lines[i];
+      let cursorLineY = textY + i * lineHeight;
+
+      text(line, textX, cursorLineY);
     }
+  }
+
+  // Draw the cursor
+  if (isTyping && cursorVisible) {
+    let cursorX = textX + textWidth(textInput.split('\n').slice(-1)[0]);
+    let cursorY = textY + (lineHeight * Math.max(textInput.split('\n').length - 1, 0));
+
+    stroke(0);
+    strokeWeight(cursorLineWeight);
+    line(cursorX, cursorY - textDescent(), cursorX, cursorY + lineHeight - textDescent());
   }
 }
