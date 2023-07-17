@@ -4,6 +4,7 @@ let times;
 let vertical;
 let smudge_pattern_black;
 let smudge_pattern_white;
+let glitch;
 
 let currentImage = null;
 let imageSize = 200; // Size of the images
@@ -17,6 +18,7 @@ function preload() {
   smudge_pattern_black  = loadImage('../img/smudge_pattern_black.png')
   smudge_pattern_black  = loadImage('../img/smudge_pattern_black.png')
   smudge_pattern_white  = loadImage('../img/smudge_pattern_white.png')
+  glitch  = loadImage('../img/glitch.png')
 }
 
 function setup() {
@@ -40,6 +42,9 @@ function keyPressed() {
   if (keyCode === 65) { // "A" key
     currentImage = vertical;
   } 
+  else if (keyCode === 69) { // "E" key
+    currentImage = glitch;
+  } 
   else if (keyCode === 87) { // "W" key
     currentImage = cov;
   } 
@@ -57,6 +62,3 @@ function keyPressed() {
   }
 }
 
-// function keyReleased() {
-//   currentImage = trans;
-// }
