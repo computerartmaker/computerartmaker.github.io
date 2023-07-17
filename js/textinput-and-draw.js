@@ -9,7 +9,7 @@ let typingTimer;
 function setup() {
   createCanvas(windowWidth, windowHeight);
 
-  // Load persisted text from localStorage if available
+  // Load text from localStorage if available
   if (localStorage.getItem('textInput')) {
     texts = JSON.parse(localStorage.getItem('textInput'));
   }
@@ -18,7 +18,6 @@ function setup() {
   document.addEventListener('keydown', handleKeyDown);
   document.addEventListener('keypress', handleKeyPress);
 
-  // Set the desired font family
   textFont('monospace');
 }
 
@@ -42,7 +41,7 @@ function mousePressed() {
   isTyping = true;
 
   // Start the cursor blinking timer
-  cursorTimer = setInterval(toggleCursor, 500);
+  cursorTimer = setInterval(toggleCursor, 1000);
 
   // Start the typing timeout timer
   clearTimeout(typingTimer);

@@ -1,3 +1,32 @@
+## todo:
+
+- add carraige return and remove cursor
+- or add tracking cursor to carraige return
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 "_"
 
 ### CDN
