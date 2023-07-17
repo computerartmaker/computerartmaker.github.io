@@ -6,6 +6,11 @@ let textX, textY;
 function setup() {
   createCanvas(windowWidth, windowHeight);
 
+  // Load persisted text from localStorage if available
+  if (localStorage.getItem('textInput')) {
+    texts = JSON.parse(localStorage.getItem('textInput'));
+  }
+
   // Detect key press to capture text input
   document.addEventListener('keydown', handleKeyDown);
   document.addEventListener('keypress', handleKeyPress);
@@ -26,6 +31,9 @@ function mousePressed() {
   textX = mouseX;
   textY = mouseY;
   isTyping = true;
+
+  // Persist the entered text to localStorage
+    localStorage.setItem('textInput', JSON.stringify(texts));
 }
 
 function handleKeyDown(event) {
