@@ -2,6 +2,8 @@ let texts = [];
 let isTyping = false;
 let textInput = '';
 let textX, textY;
+let cursorVisible = false;
+let cursorTimer;
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
@@ -26,14 +28,17 @@ function mousePressed() {
     texts.push(textObj);
     textInput = '';
     isTyping = false;
+
+    // Persist the entered text to localStorage
+    localStorage.setItem('textInput', JSON.stringify(texts));
   }
 
   textX = mouseX;
   textY = mouseY;
   isTyping = true;
 
-  // Persist the entered text to localStorage
-    localStorage.setItem('textInput', JSON.stringify(texts));
+  // Start the cursor blinking timer
+  cursorTimer = setInterval(toggleCursor, 500);
 }
 
 function handleKeyDown(event) {
@@ -60,6 +65,10 @@ function handleKeyPress(event) {
   }
 }
 
+function toggleCursor() {
+  cursorVisible = !cursorVisible;
+}
+
 function draw() {
   background("#fce2e1");
 
@@ -76,5 +85,14 @@ function draw() {
     textSize(20);
     textAlign(LEFT, TOP);
     text(textInput, textX, textY);
+
+    // Draw the cursor
+    if (cursorVisible) {
+      let cursorX = textX + textWidth(textInput);
+      let cursorY = textY;
+      stroke(0);
+      strokeWeight(2);
+      line(cursorX, cursorY, cursorX, cursorY + 20);
+    }
   }
 }
