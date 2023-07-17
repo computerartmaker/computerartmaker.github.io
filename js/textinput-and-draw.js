@@ -1,19 +1,21 @@
-// function setup() {
-  // createCanvas(windowWidth, windowHeight);
-//   imageMode(CENTER);
-  // background("#fce2e1");
-// }
-
 let texts = [];
 let isTyping = false;
 let textInput = '';
 let textX, textY;
+let textarea;
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
+  loadSavedData();
 
-  // Detect key press to capture text input
-  document.addEventListener('keydown', keyTyped);
+  // Create and position the HTML textarea element
+  textarea = document.createElement('textarea');
+  textarea.style.position = 'absolute';
+  textarea.style.left = '0';
+  textarea.style.top = '0';
+  textarea.style.display = 'none';
+  document.body.appendChild(textarea);
+  textarea.addEventListener('input', handleInput);
 }
 
 function mousePressed() {
@@ -24,26 +26,23 @@ function mousePressed() {
       y: textY
     };
     texts.push(textObj);
+    saveData();
     textInput = '';
     isTyping = false;
+  } else {
+    textX = mouseX;
+    textY = mouseY;
+    isTyping = true;
+    textarea.style.left = textX + 'px';
+    textarea.style.top = textY + 'px';
+    textarea.style.display = 'block';
+    textarea.value = '';
+    textarea.focus();
   }
-
-  textX = mouseX;
-  textY = mouseY;
-  isTyping = true;
 }
 
-function keyTyped(event) {
-  if (isTyping) {
-    if (event.key === 'Backspace') {
-      textInput = textInput.slice(0, -1);
-    } else if (event.key.length === 1) {
-      // Append the current character to the text input
-      textInput += event.key;
-    }
-    // Prevent further processing of key input
-    event.preventDefault();
-  }
+function handleInput(event) {
+  textInput = event.target.value;
 }
 
 function draw() {
@@ -62,5 +61,16 @@ function draw() {
     textSize(20);
     textAlign(LEFT, TOP);
     text(textInput, textX, textY);
+  }
+}
+
+function saveData() {
+  localStorage.setItem('texts', JSON.stringify(texts));
+}
+
+function loadSavedData() {
+  const savedData = localStorage.getItem('texts');
+  if (savedData) {
+    texts = JSON.parse(savedData);
   }
 }
