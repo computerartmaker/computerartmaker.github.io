@@ -2,20 +2,13 @@ let texts = [];
 let isTyping = false;
 let textInput = '';
 let textX, textY;
-let textarea;
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  loadSavedData();
 
-  // Create and position the HTML textarea element
-  textarea = document.createElement('textarea');
-  textarea.style.position = 'absolute';
-  textarea.style.left = '0';
-  textarea.style.top = '0';
-  textarea.style.display = 'none';
-  document.body.appendChild(textarea);
-  textarea.addEventListener('input', handleInput);
+  // Detect key press to capture text input
+  document.addEventListener('keydown', handleKeyDown);
+  document.addEventListener('keypress', handleKeyPress);
 }
 
 function mousePressed() {
@@ -26,23 +19,37 @@ function mousePressed() {
       y: textY
     };
     texts.push(textObj);
-    saveData();
     textInput = '';
     isTyping = false;
-  } else {
-    textX = mouseX;
-    textY = mouseY;
-    isTyping = true;
-    textarea.style.left = textX + 'px';
-    textarea.style.top = textY + 'px';
-    textarea.style.display = 'block';
-    textarea.value = '';
-    textarea.focus();
+  }
+
+  textX = mouseX;
+  textY = mouseY;
+  isTyping = true;
+}
+
+function handleKeyDown(event) {
+  if (isTyping) {
+    if (event.key === 'Backspace') {
+      // Prevent further processing of key input
+      event.preventDefault();
+
+      // Remove last character from text input
+      textInput = textInput.slice(0, -1);
+    }
   }
 }
 
-function handleInput(event) {
-  textInput = event.target.value;
+function handleKeyPress(event) {
+  if (isTyping) {
+    if (event.key.length === 1) {
+      // Prevent further processing of key input
+      event.preventDefault();
+
+      // Append the current character to the text input
+      textInput += event.key;
+    }
+  }
 }
 
 function draw() {
@@ -61,16 +68,5 @@ function draw() {
     textSize(20);
     textAlign(LEFT, TOP);
     text(textInput, textX, textY);
-  }
-}
-
-function saveData() {
-  localStorage.setItem('texts', JSON.stringify(texts));
-}
-
-function loadSavedData() {
-  const savedData = localStorage.getItem('texts');
-  if (savedData) {
-    texts = JSON.parse(savedData);
   }
 }
