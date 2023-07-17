@@ -24,49 +24,54 @@
 </head>
 <body>
 <div class="container">
-  <img src="/img/cov.png" alt="img">  
+  <img src="/img/cov.png" alt="img"> 
 </div>
 
 
 <!-- screenshot image to file using 's' key -->
   <script>
+  
+
+
+  
+
+
   document.addEventListener('keydown', function(event) {
   if (event.key === 's') { // Check for 'S' key
     event.preventDefault(); // Prevent default 'Save As' behavior
 
-    // Calculate the center of the page
-    var centerX = window.innerWidth / 2;
-    var centerY = window.innerHeight / 2;
+    // Get the image element
+    var image = document.querySelector('img'); // Update the selector as needed
 
-    // Scroll the page to the center position
-    window.scrollTo(centerX, centerY);
+    // Calculate the boundary coordinates of the centered image
+    var startX = Math.round(window.innerWidth / 2 - image.width / 2); // X-coordinate of the starting point
+    var startY = Math.round(window.innerHeight / 2 - image.height / 2); // Y-coordinate of the starting point
+    var screenshotWidth = image.width; // Width of the screenshot
+    var screenshotHeight = image.height; // Height of the screenshot
+
+    // Scroll the page to the starting point of the boundary
+    window.scrollTo(startX, startY);
 
     // Wait for the scroll to complete
     setTimeout(function() {
-      // Capture screenshot of the center portion
-      html2canvas(document.body).then(function(canvas) {
-        var context = canvas.getContext('2d');
-        var centerX = Math.round(canvas.width / 2);
-        var centerY = Math.round(canvas.height / 2);
-        var screenshotWidth = Math.round(window.innerWidth);
-        var screenshotHeight = Math.round(window.innerHeight);
-        var startX = centerX - Math.round(screenshotWidth / 2);
-        var startY = centerY - Math.round(screenshotHeight / 2);
-        var screenshotCanvas = document.createElement('canvas');
-        screenshotCanvas.width = screenshotWidth;
-        screenshotCanvas.height = screenshotHeight;
-        var screenshotContext = screenshotCanvas.getContext('2d');
-        screenshotContext.drawImage(canvas, startX, startY, screenshotWidth, screenshotHeight, 0, 0, screenshotWidth, screenshotHeight);
-
+      // Capture the screenshot of the boundary
+      html2canvas(document.body, {
+        x: startX,
+        y: startY,
+        width: screenshotWidth,
+        height: screenshotHeight
+      }).then(function(canvas) {
         // Create a temporary link element
         var link = document.createElement('a');
-        link.href = screenshotCanvas.toDataURL('image/png');
+        link.href = canvas.toDataURL('image/png');
         link.download = 'screenshot.png';
         link.click();
       });
-    }, 500); // Adjust the delay as needed for the scroll to complete
+    }, 100); // Adjust the delay as needed for the scroll to complete
   }
 });
+
+
 
 
   </script>
