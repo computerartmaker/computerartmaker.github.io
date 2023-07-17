@@ -1,5 +1,4 @@
-
-
+let clearBtn;
 
 let texts = [];
 let isTyping = false;
@@ -11,6 +10,7 @@ let typingTimer;
 let lineHeight;
 let textAlignY;
 let cursorLineWeight = 4;
+let fontSize = 16;
 
 function preload() {
   // Load text from localStorage if available
@@ -22,11 +22,15 @@ function preload() {
 function setup() {
   createCanvas(windowWidth, windowHeight);
 
+  clearBtn = document.getElementById('clearBtn');
+  clearBtn.addEventListener('click', handleClear);
+
   // Detect key press to capture text input
   document.addEventListener('keydown', handleKeyDown);
   document.addEventListener('keypress', handleKeyPress);
 
   textFont('monospace');
+  textSize(fontSize); // Set the initial font size
   lineHeight = 20; // Adjust line height as desired
   textAlignY = TOP; // Adjust vertical text alignment as desired
 }
@@ -67,6 +71,22 @@ function handleKeyDown(event) {
       // Remove last character from text input
       textInput = textInput.slice(0, -1);
     }
+
+    
+
+
+    else if ((event.key === "+" || event.code === "NumpadAdd") && !event.shiftKey) {
+      // Extended keyboard "+" key (e.g., numeric keypad)
+      event.preventDefault();
+      fontSize += 2; // Increase the font size by 2 (adjust as desired)
+      textSize(fontSize); // Set the updated font size
+    } else if (event.key === '-' && event.code !== 'Minus') {
+      // Decrease the font size (minimum size is 2)
+      event.preventDefault();
+      fontSize = max(2, fontSize - 2); // Decrease the font size by 2 (adjust as desired)
+      textSize(fontSize); // Set the updated font size
+    }
+
   }
 }
 
@@ -124,14 +144,14 @@ function draw() {
   for (let i = 0; i < texts.length; i++) {
     let textObj = texts[i];
     fill(0);
-    textSize(16);
-    textAlign(LEFT, textAlignY);
+    // textSize(16);
+    // textAlign(LEFT, textAlignY);
     text(textObj.text, textObj.x, textObj.y);
   }
 
   if (isTyping) {
     fill(0);
-    textSize(16);
+    // textSize(16);
     textAlign(LEFT, textAlignY);
 
     let lines = textInput.split('\n');
@@ -155,3 +175,16 @@ function draw() {
     line(cursorX, cursorY - textDescent(), cursorX, cursorY + lineHeight - textDescent());
   }
 }
+
+// Clear localStorage data/canvas
+function handleClear() {
+  isTyping = false;  
+  const yes = confirm("Are you sure?");
+  if(yes){
+  texts = []; // Clear the texts array
+  textInput = ''; // Clear the text input
+  localStorage.removeItem('textInput'); // Delete the localStorage data
+  }
+}
+
+

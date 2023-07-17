@@ -1,10 +1,6 @@
-## todo:
-
-- add carraige return and remove cursor
-- or add tracking cursor to carraige return
-
-
-
+## Functionality
+- click anywhere on page to activate cursor and begin typing 
+- extended keyboard + and - buttons globally increase font size (while cursor is active)
 
 
 
