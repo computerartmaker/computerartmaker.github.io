@@ -21,4 +21,4 @@
 
 `/screenshot.html`
 ## Functionality (screenshot)
-- press 's' key to screenshot img on page (auto generates link to download file)
+- mouse click any image on page to capture screenshot (auto generates link to download file)
