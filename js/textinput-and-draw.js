@@ -4,6 +4,7 @@ let textInput = '';
 let textX, textY;
 let cursorVisible = false;
 let cursorTimer;
+let typingTimer;
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
@@ -39,6 +40,10 @@ function mousePressed() {
 
   // Start the cursor blinking timer
   cursorTimer = setInterval(toggleCursor, 500);
+
+  // Start the typing timeout timer
+  clearTimeout(typingTimer);
+  typingTimer = setTimeout(finishTyping, 10000);
 }
 
 function handleKeyDown(event) {
@@ -61,12 +66,34 @@ function handleKeyPress(event) {
 
       // Append the current character to the text input
       textInput += event.key;
+
+      // Restart the typing timeout timer
+      clearTimeout(typingTimer);
+      typingTimer = setTimeout(finishTyping, 10000);
     }
   }
 }
 
 function toggleCursor() {
   cursorVisible = !cursorVisible;
+}
+
+function finishTyping() {
+  if (isTyping) {
+    let textObj = {
+      text: textInput,
+      x: textX,
+      y: textY
+    };
+    texts.push(textObj);
+    textInput = '';
+    isTyping = false;
+
+    // Persist the entered text to localStorage
+    localStorage.setItem('textInput', JSON.stringify(texts));
+  }
+  clearInterval(cursorTimer);
+  cursorVisible = false;
 }
 
 function draw() {
