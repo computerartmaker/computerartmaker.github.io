@@ -19,3 +19,6 @@
 - press/toggle 'x' change image
 - single image draw = press image key (above) then press q twice to toggle drawing on/off (not repeat).
 
+`/screenshot.html`
+## Functionality (screenshot)
+- press 's' key to screenshot center of screen (auto generates link to download file)
