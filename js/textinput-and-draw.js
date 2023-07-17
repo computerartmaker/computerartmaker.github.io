@@ -17,6 +17,9 @@ function setup() {
   // Detect key press to capture text input
   document.addEventListener('keydown', handleKeyDown);
   document.addEventListener('keypress', handleKeyPress);
+
+  // Set the desired font family
+  textFont('monospace');
 }
 
 function mousePressed() {
@@ -102,14 +105,14 @@ function draw() {
   for (let i = 0; i < texts.length; i++) {
     let textObj = texts[i];
     fill(0);
-    textSize(20);
+    textSize(16);
     textAlign(LEFT, TOP);
     text(textObj.text, textObj.x, textObj.y);
   }
 
   if (isTyping) {
     fill(0);
-    textSize(20);
+    textSize(16);
     textAlign(LEFT, TOP);
     text(textInput, textX, textY);
 
