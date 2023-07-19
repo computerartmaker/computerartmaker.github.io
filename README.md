@@ -5,9 +5,10 @@
 
 `/draw.html`
 ## Functionality (draw)
-- mousedown straight lines
-- press/toggle 'a' freehand (mousehover)
-- press/toggle 'q' shading (mousehover)
+- mousedown straight lines (mousedown)
+- press/TOGGLE (on/off) 'f' freehand (mousehover)
+- press/TOGGLE (on/off) 's' shading (mousehover)
+- '+' and '-' to change StrokeWidth
 
 `/image.html`
 ## Functionality (image)
