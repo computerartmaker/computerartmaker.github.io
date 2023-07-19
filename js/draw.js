@@ -67,12 +67,7 @@ function keyPressed() {
       strokeColor = "#000000"; // Change stroke color to black
     }
   }
-  // Change stroke weight using the "+" and "-" keys
-  // if (keyCode === 187 || keyCode === 107) { // "+" key
-  //     strokeWidth += 1;
-  // } else if (keyCode === 189 || keyCode === 109) { // "-" key  
-  //     strokeWidth = max(1, strokeWidth - 1);
-  // }
+
   // Change stroke weight using the "+" and "-" keys for both drawing modes
   if (keyCode === 187 || keyCode === 107) { // "+" key
     strokeWidth += 1;
