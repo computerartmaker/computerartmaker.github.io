@@ -56,7 +56,7 @@ function keyPressed() {
     redraw();
   } else if (keyCode === 87) { // "W" key
     if (strokeColor === "#000000") {
-      strokeColor = "#fce2e1"; // Change stroke color to white
+      strokeColor = "#fff"; // Change stroke color to white
     } else {
       strokeColor = "#000000"; // Change stroke color to black
     }
