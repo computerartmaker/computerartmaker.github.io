@@ -85,24 +85,44 @@ function mouseReleased() {
 // TOOL KEYCODE
 function keyPressed() {
   if (keyCode === 70) { // "f" key
-    drawFreehand = !drawFreehand;
-    toolTip.innerText = "Freehand Tool (Mouse Hover)";
+    if(drawFreehand = !drawFreehand){
+      toolTip.innerText = "Freehand Tool (Mouse Hover)";
+    }
+    else {
+      toolTip.innerText = "Straight Line Tool (Mouse Press)";
+    }
   }
   if (keyCode === 83) { // "s" key
-    drawShading = !drawShading;
-    toolTip.innerText = "Shading Tool (Mouse Hover)";
+    if(drawShading = !drawShading) {
+      toolTip.innerText = "Shading Tool (Mouse Hover)";
+    }
+    else {
+      toolTip.innerText = "Straight Line Tool (Mouse Press)";
+    }
   }
   if (keyCode === 72) { // "h" key
-    drawHourGlass = !drawHourGlass;
-    toolTip.innerText = "Hour Glass Tool (Mouse Hover)";
+    if(drawHourGlass = !drawHourGlass){
+      toolTip.innerText = "Hour Glass Tool (Mouse Hover)";
+    }
+    else {
+      toolTip.innerText = "Straight Line Tool (Mouse Press)";
+    }
   }
   if (keyCode === 68) { // "d" key
-    drawDotty = !drawDotty;
-    toolTip.innerText = "Dot Tool (Mouse Hover)";
+    if(drawDotty = !drawDotty){
+      toolTip.innerText = "Dot Tool (Mouse Hover)";
+    }
+    else {
+      toolTip.innerText = "Straight Line Tool (Mouse Press)";
+    }
   }
   if (keyCode === 65) { // "a" key
-    drawFan = !drawFan;
-    toolTip.innerText = "Fan Tool (Mouse Press)";
+    if(drawFan = !drawFan){
+      toolTip.innerText = "Fan Tool (Mouse Press)";
+    } 
+    else {
+      toolTip.innerText = "Straight Line Tool (Mouse Press)";
+    }
   }
 
 // COLOUR KEYCOE
