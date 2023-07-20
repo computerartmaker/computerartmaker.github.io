@@ -16,7 +16,6 @@
 - '+' and '-' to change StrokeWidth
 
 #todo
-- draw spirals from anchored point
 - draw diagonal straight line
 
 
