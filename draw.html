@@ -7,9 +7,22 @@
     <title>Draw in browser</title>
     <link rel='shortcut icon' href='https://easycss.github.io/favicon/favicon.png' type='image/x-icon' />
     <link rel='stylesheet' href='/css/style.css' />
-    
+  <style>
+  .tooltip{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    padding: 5px 8px 5px 6px;
+    background-color: yellow;
+    color: red;
+    font-family: sans-serif;
+  }
+  </style>  
   </head>
   <body>
+  
+  <div id="tooltip" class="tooltip"></div>
+
   <nav>
     <a href="/">Text</a>
     <a href="/draw.html">Draw</a>

@@ -6,11 +6,13 @@
 `/draw.html`
 ## Functionality (draw)
 - default/onload straight lines (mousedown)
+
 - 'f' freehand (mousehover) press/TOGGLE (on/off) 
 - 's' shading (mousehover)press/TOGGLE (on/off) 
 - 'h' hourglass (mousehover) press/TOGGLE (on/off) 
 - 'd' dotty (mousehover) press/TOGGLE (on/off) 
 - 'a' fan (mousedown) press/TOGGLE (on/off)
+
 - 'w' change strokeColor to white
 - 'r' change strokeColor to red
 - '+' and '-' to change StrokeWidth
@@ -34,3 +36,10 @@
 - mouse click any image on page to capture screenshot (auto generates link to download file)
 
 
+
+
+```
+line(lineStartX, lineStartX, pmouseX, lineStartY);
+line(lineStartX, lineStartX, pmouseX, pmouseY);
+line(lineStartX, lineStartX, mouseX, mouseY);
+```

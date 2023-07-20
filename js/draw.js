@@ -1,12 +1,18 @@
 let lineStartX, lineStartY;
 let drawLine = false;
+
 let drawFreehand = false;
 let drawHourGlass = false;
 let drawDotty = false;
 let drawFan = false;
 let drawShading = false;
+
 let strokeWidth = 0.1;
-let strokeColor = "#000"; // Initial stroke color is black;
+let strokeColor = "blue"; // Initial stroke color
+
+
+let toolTip = document.getElementById('tooltip') 
+toolTip.innerText = "Straight Line Tool (Mouse Press)";
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
@@ -16,7 +22,6 @@ function setup() {
 
 // TOOL DESIGN
 function draw() {
-  // noFill();
   stroke(strokeColor);
   strokeWeight(strokeWidth);
 
@@ -81,18 +86,23 @@ function mouseReleased() {
 function keyPressed() {
   if (keyCode === 70) { // "f" key
     drawFreehand = !drawFreehand;
+    toolTip.innerText = "Freehand Tool (Mouse Hover)";
   }
   if (keyCode === 83) { // "s" key
     drawShading = !drawShading;
+    toolTip.innerText = "Shading Tool (Mouse Hover)";
   }
   if (keyCode === 72) { // "h" key
     drawHourGlass = !drawHourGlass;
+    toolTip.innerText = "Hour Glass Tool (Mouse Hover)";
   }
   if (keyCode === 68) { // "d" key
     drawDotty = !drawDotty;
+    toolTip.innerText = "Dot Tool (Mouse Hover)";
   }
   if (keyCode === 65) { // "a" key
     drawFan = !drawFan;
+    toolTip.innerText = "Fan Tool (Mouse Press)";
   }
 
 // COLOUR KEYCOE
