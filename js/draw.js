@@ -4,9 +4,9 @@ let drawFreehand = false;
 let drawHourGlass = false;
 let drawDotty = false;
 let drawFan = false;
+let continuousDrawing = false;
 let strokeWidth = 0.1;
 let strokeColor = "#000"; // Initial stroke color is black;
-let continuousDrawing = false;
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
@@ -14,6 +14,7 @@ function setup() {
   background("#fce2e1");
 }
 
+// TOOL DESIGN
 function draw() {
   // noFill();
   stroke(strokeColor);
@@ -42,7 +43,7 @@ function draw() {
     line(pmouseX, pmouseY, pmouseX, pmouseY);
   }
   else if(drawFan){
-    // 'q' horizontal and vertical
+    // 'a' horizontal and vertical
     if (mouseIsPressed)
     {
       drawLine = false;
@@ -75,6 +76,7 @@ function mouseReleased() {
   drawLine = false;
 }
 
+// TOOL KEYCODE
 function keyPressed() {
   if (keyCode === 70) { // "f" key
     drawFreehand = !drawFreehand;
@@ -92,6 +94,7 @@ function keyPressed() {
     drawFan = !drawFan;
   }
 
+// COLOUR KEYCOE
   if (keyCode === 87) { // "w" key
     if (strokeColor === "#000" || strokeColor === "#f33") 
     {
@@ -112,6 +115,7 @@ function keyPressed() {
     }
   }
 
+// SIZE KEYCODE
   // Change stroke weight using the "+" and "-" keys for both drawing modes
   if (keyCode === 187 || keyCode === 107) { // "+" key
     strokeWidth += 1;
