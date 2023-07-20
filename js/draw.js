@@ -40,6 +40,7 @@ function draw() {
   }
   else if(drawDotty){
     // 'd' horizontal and vertical
+    strokeWeight(strokeWidth + 2);
     line(pmouseX, pmouseY, pmouseX, pmouseY);
   }
   else if(drawFan){
