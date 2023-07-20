@@ -31,10 +31,22 @@
     color: white;
     padding: 4px;  
   }
+  h3{
+    display: none;
+  }
+  @media (max-width: 768px){
+    .container{
+      display: none;
+    }
+    h3{
+      display: block
+    }
+  }
   </style>  
   </head>
   <body>
-  
+  <h3>This app is built for a larger screen.</h3>
+<div class="container">
   <div id="tooltip" class="tooltip"></div>
 
   <nav>
@@ -51,8 +63,14 @@
     <span>d</span>
     <span>f</span>
     <span>h</span>
+    <span>+</span>
+    <span>-</span>
+    <span>r</span>
+    <span>b</span>
+    <span>w</span>
     </p>
   </div>
+</div>
 
 <!--  -->
 <!--  -->
