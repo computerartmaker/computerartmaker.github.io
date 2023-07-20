@@ -13,12 +13,13 @@
 - 'd' dotty (mousehover) press/TOGGLE (on/off) 
 - 'a' fan (mousedown) press/TOGGLE (on/off)
 
+- toggle any colour to return to default blue
 - 'w' change strokeColor to white
 - 'r' change strokeColor to red
+- 'b' change strokeColor to black
 - '+' and '-' to change StrokeWidth
 
 #todo
-- configure 'b' blue/black fontColor toggle 
 - draw diagonal straight line
 
 

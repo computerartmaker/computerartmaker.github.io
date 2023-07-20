@@ -13,6 +13,8 @@ let strokeColor = "blue"; // Initial stroke color
 
 let toolTip = document.getElementById('tooltip') 
 toolTip.innerText = "Straight Line Tool (Mouse Press)";
+toolTip.style.backgroundColor = "blue";
+toolTip.style.color = "white";
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
@@ -130,9 +132,13 @@ function keyPressed() {
     if (strokeColor === "blue" || strokeColor === "black" || strokeColor === "red") 
     {
       strokeColor = "white"; // Change stroke color to white
+      toolTip.style.backgroundColor = "white";
+      toolTip.style.color = "black";
     } 
     else {
       strokeColor = "blue"; // Change stroke color to black
+      toolTip.style.backgroundColor = "blue";
+      toolTip.style.color = "white";
     }
   }
   
@@ -140,9 +146,13 @@ function keyPressed() {
     if (strokeColor === "blue" || strokeColor === "black" || strokeColor === "white") 
     {
       strokeColor = "red"; // Change stroke color to white
+      toolTip.style.backgroundColor = "red";
+      toolTip.style.color = "white";
     }  
     else {
       strokeColor = "blue"; // Change stroke color to black
+      toolTip.style.backgroundColor = "blue";
+      toolTip.style.color = "white";
     }
   }
   
@@ -150,9 +160,13 @@ function keyPressed() {
     if (strokeColor === "blue" || strokeColor === "red" || strokeColor === "white") 
     {
       strokeColor = "black"; // Change stroke color to white
+      toolTip.style.backgroundColor = "black";
+      toolTip.style.color = "white";
     }  
     else {
       strokeColor = "blue"; // Change stroke color to black
+      toolTip.style.backgroundColor = "blue";
+      toolTip.style.color = "white";
     }
   }
 
