@@ -18,6 +18,7 @@
 - '+' and '-' to change StrokeWidth
 
 #todo
+- configure 'b' blue/black fontColor toggle 
 - draw diagonal straight line
 
 

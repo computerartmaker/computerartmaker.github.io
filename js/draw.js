@@ -107,22 +107,32 @@ function keyPressed() {
 
 // COLOUR KEYCOE
   if (keyCode === 87) { // "w" key
-    if (strokeColor === "#000" || strokeColor === "#f33") 
+    if (strokeColor === "blue" || strokeColor === "black" || strokeColor === "red") 
     {
-      strokeColor = "#fff"; // Change stroke color to white
+      strokeColor = "white"; // Change stroke color to white
     } 
     else {
-      strokeColor = "#000"; // Change stroke color to black
+      strokeColor = "blue"; // Change stroke color to black
     }
   }
   
   if (keyCode === 82) { // "r" key
-    if (strokeColor === "#000" || strokeColor === "#fff") 
+    if (strokeColor === "blue" || strokeColor === "black" || strokeColor === "white") 
     {
-      strokeColor = "#f33"; // Change stroke color to white
-    } 
+      strokeColor = "red"; // Change stroke color to white
+    }  
     else {
-      strokeColor = "#000"; // Change stroke color to black
+      strokeColor = "blue"; // Change stroke color to black
+    }
+  }
+  
+  if (keyCode === 66) { // "b" key
+    if (strokeColor === "blue" || strokeColor === "red" || strokeColor === "white") 
+    {
+      strokeColor = "black"; // Change stroke color to white
+    }  
+    else {
+      strokeColor = "blue"; // Change stroke color to black
     }
   }
 
