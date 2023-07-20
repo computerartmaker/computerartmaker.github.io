@@ -3,9 +3,9 @@ let drawLine = false;
 let drawFreehand = false;
 let drawHourGlass = false;
 let drawDotty = false;
-let drawSpiral = false;
+let drawFan = false;
 let strokeWidth = 0.1;
-let strokeColor = "#000000"; // Initial stroke color is black;
+let strokeColor = "#000"; // Initial stroke color is black;
 let continuousDrawing = false;
 
 function setup() {
@@ -15,6 +15,7 @@ function setup() {
 }
 
 function draw() {
+  // noFill();
   stroke(strokeColor);
   strokeWeight(strokeWidth);
 
@@ -34,18 +35,19 @@ function draw() {
   }
   else if(drawHourGlass){
     // 'h' horizontal and vertical
-    // noFill();
     line(mouseX, mouseY, mouseY, pmouseY);
   }
   else if(drawDotty){
     // 'd' horizontal and vertical
-    // noFill();
     line(pmouseX, pmouseY, pmouseX, pmouseY);
   }
-  else if(drawSpiral){
+  else if(drawFan){
     // 'q' horizontal and vertical
-    // noFill();
-    line(mouseX, pmouseY, mouseX, mouseY);
+    if (mouseIsPressed)
+    {
+      drawLine = false;
+      line(lineStartX, lineStartY, mouseX, mouseY);
+    }
   }
 }
 
@@ -86,15 +88,27 @@ function keyPressed() {
   if (keyCode === 68) { // "d" key
     drawDotty = !drawDotty;
   }
-  if (keyCode === 81) { // "q" key
-    drawSpiral = !drawSpiral;
+  if (keyCode === 65) { // "a" key
+    drawFan = !drawFan;
   }
 
   if (keyCode === 87) { // "w" key
-    if (strokeColor === "#000000") {
+    if (strokeColor === "#000" || strokeColor === "#f33") 
+    {
       strokeColor = "#fff"; // Change stroke color to white
-    } else {
-      strokeColor = "#000000"; // Change stroke color to black
+    } 
+    else {
+      strokeColor = "#000"; // Change stroke color to black
+    }
+  }
+  
+  if (keyCode === 82) { // "r" key
+    if (strokeColor === "#000" || strokeColor === "#fff") 
+    {
+      strokeColor = "#f33"; // Change stroke color to white
+    } 
+    else {
+      strokeColor = "#000"; // Change stroke color to black
     }
   }
 
