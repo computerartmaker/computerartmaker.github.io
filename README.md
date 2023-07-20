@@ -8,7 +8,14 @@
 - mousedown straight lines (mousedown)
 - press/TOGGLE (on/off) 'f' freehand (mousehover)
 - press/TOGGLE (on/off) 's' shading (mousehover)
+- press/TOGGLE (on/off) 'h' hourglass (mousehover)
+- press/TOGGLE (on/off) 'd' dotty (mousehover)
 - '+' and '-' to change StrokeWidth
+
+#todo
+- draw spirals from anchored point
+- draw diagonal straight line
+
 
 `/image.html`
 ## Functionality (image)
@@ -23,3 +30,5 @@
 `/screenshot.html`
 ## Functionality (screenshot)
 - mouse click any image on page to capture screenshot (auto generates link to download file)
+
+

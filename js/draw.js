@@ -1,6 +1,9 @@
 let lineStartX, lineStartY;
-let drawingLine = false;
+let drawLine = false;
 let drawFreehand = false;
+let drawHourGlass = false;
+let drawDotty = false;
+let drawSpiral = false;
 let strokeWidth = 0.1;
 let strokeColor = "#000000"; // Initial stroke color is black;
 let continuousDrawing = false;
@@ -16,15 +19,33 @@ function draw() {
   strokeWeight(strokeWidth);
 
   if (continuousDrawing && !drawFreehand) {
-    if (drawingLine) {
+    if (drawLine) {
       if (abs(mouseX - lineStartX) > abs(mouseY - lineStartY)) {
+        // 's' horizontal
         line(lineStartX, lineStartY, mouseX, lineStartY);
       } else {
+        // 's' vertical
         line(lineStartX, lineStartY, lineStartX, mouseY);
       }
     }
   } else if (drawFreehand) {
+    // 'f' horizontal and vertical
     line(pmouseX, pmouseY, mouseX, mouseY);
+  }
+  else if(drawHourGlass){
+    // 'h' horizontal and vertical
+    // noFill();
+    line(mouseX, mouseY, mouseY, pmouseY);
+  }
+  else if(drawDotty){
+    // 'd' horizontal and vertical
+    // noFill();
+    line(pmouseX, pmouseY, pmouseX, pmouseY);
+  }
+  else if(drawSpiral){
+    // 'q' horizontal and vertical
+    // noFill();
+    line(mouseX, pmouseY, mouseX, mouseY);
   }
 }
 
@@ -33,13 +54,13 @@ function mouseMoved() {
     stroke(strokeColor);
     strokeWeight(strokeWidth);
     lineStartX = pmouseX;
-    lineStartY = pmouseY;
-    drawingLine = true;
+    lineStartY =  pmouseY;
+    drawLine = true;
   }
 }
 
 function mouseDragged() {
-  if (!drawFreehand) {
+  if (!drawFreehand && drawLine) {
     if (abs(mouseX - lineStartX) > abs(mouseY - lineStartY)) {
       line(lineStartX, lineStartY, mouseX, lineStartY);
     } else {
@@ -49,7 +70,7 @@ function mouseDragged() {
 }
 
 function mouseReleased() {
-  drawingLine = false;
+  drawLine = false;
 }
 
 function keyPressed() {
@@ -58,6 +79,15 @@ function keyPressed() {
   }
   if (keyCode === 83) { // "s" key
     continuousDrawing = !continuousDrawing;
+  }
+  if (keyCode === 72) { // "h" key
+    drawHourGlass = !drawHourGlass;
+  }
+  if (keyCode === 68) { // "d" key
+    drawDotty = !drawDotty;
+  }
+  if (keyCode === 81) { // "q" key
+    drawSpiral = !drawSpiral;
   }
 
   if (keyCode === 87) { // "w" key
