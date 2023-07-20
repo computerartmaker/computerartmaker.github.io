@@ -4,7 +4,7 @@ let drawFreehand = false;
 let drawHourGlass = false;
 let drawDotty = false;
 let drawFan = false;
-let continuousDrawing = false;
+let drawShading = false;
 let strokeWidth = 0.1;
 let strokeColor = "#000"; // Initial stroke color is black;
 
@@ -20,7 +20,7 @@ function draw() {
   stroke(strokeColor);
   strokeWeight(strokeWidth);
 
-  if (continuousDrawing && !drawFreehand) {
+  if (drawShading && !drawFreehand) {
     if (drawLine) {
       if (abs(mouseX - lineStartX) > abs(mouseY - lineStartY)) {
         // 's' horizontal
@@ -83,7 +83,7 @@ function keyPressed() {
     drawFreehand = !drawFreehand;
   }
   if (keyCode === 83) { // "s" key
-    continuousDrawing = !continuousDrawing;
+    drawShading = !drawShading;
   }
   if (keyCode === 72) { // "h" key
     drawHourGlass = !drawHourGlass;
