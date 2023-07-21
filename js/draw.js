@@ -55,6 +55,7 @@ function draw() {
     if (mouseIsPressed)
     {
       drawLine = false;
+      noFill();
       line(lineStartX, lineStartY, mouseX, mouseY);
     }
   }
