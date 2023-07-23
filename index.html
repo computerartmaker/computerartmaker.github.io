@@ -15,10 +15,22 @@
   <a href="/">Text</a>
   <a href="/draw.html">Draw</a>
   <a href="/image.html">Image</a>
-  <a href="#info">Info</a>
+  <a href="#" id="info">Info</a>
 </nav>
  
 <button id="clearBtn" class="btn btn-red">Clear All</button>
+
+
+<div id="modal-container">
+    <div id="modal">
+      <h2>Text input</h2>
+
+      <p>Click anywhere on page to activate a cursor and begin typing</p>
+      <p>Extended keyboard <span>+</span> and <span>-</span> buttons globally increase font size (while cursor is active)</p>
+
+      <button id="close-modal">Close</button>
+    </div>
+  </div>
 
 
 <!--  -->
@@ -29,6 +41,7 @@
     <script src="js/libs/p5.dom.js" type="text/javascript"></script>
     <!--  -->
     <script src="js/text.js" type="text/javascript"></script>
+    <script src="js/modal.js" type="text/javascript"></script>
 
   </body>
 </html>

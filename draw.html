@@ -7,42 +7,6 @@
     <title>Draw in browser</title>
     <link rel='shortcut icon' href='https://easycss.github.io/favicon/favicon.png' type='image/x-icon' />
     <link rel='stylesheet' href='/css/style.css' />
-  <style>
-  .tooltip{
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    padding: 5px 8px 5px 6px;
-    /* background-color: yellow; */
-    /* color: green; */
-    font-family: sans-serif;
-  }
-  .keycodes{
-    position: absolute;
-    top: 0px;
-    right: 0px;
-    padding: 5px 6px 5px 8px;
-    background-color: white;
-    color: black;
-    font-family: sans-serif;
-  }
-  span{
-    background-color: red;
-    color: white;
-    padding: 4px;  
-  }
-  h3{
-    display: none;
-  }
-  @media (max-width: 768px){
-    .container{
-      display: none;
-    }
-    h3{
-      display: block
-    }
-  }
-  </style>  
   </head>
   <body>
   <h3>This app is built for a larger screen.</h3>
@@ -53,7 +17,7 @@
     <a href="/">Text</a>
     <a href="/draw.html">Draw</a>
     <a href="/image.html">Image</a>
-    <a href="#info">Info</a>
+    <a href="#" id="info">Info</a>
   </nav>
 
   <div class="keycodes">
@@ -73,6 +37,76 @@
   </div>
 </div>
 
+
+<div id="modal-container">
+    <div id="modal">
+      <h2>Drawing Tools</h2>
+      <table>
+      <tr>
+        <th>Tool/Key</th>
+        <th>Action</th>
+      </tr>
+
+      <tr>
+        <td>Straight Lines</td>
+        <td>Mouse Press</td>
+      </tr>
+
+      <tr>
+        <td>TOGGLE (on/off) <span>'a'</span></td>
+        <td>Mouse Press ("Fan")</td>
+      </tr>
+
+      <tr>
+        <td>TOGGLE (on/off) <span>'s'</span></td>
+        <td>Mouse Hover (Shading)</td>
+      </tr>
+
+      <tr>
+        <td>TOGGLE (on/off) <span>'d'</span></td>
+        <td>Mouse Hover (Dotted)</td>
+      </tr>
+
+      <tr>
+        <td>TOGGLE (on/off) <span>'f'</span></td>
+        <td>Mouse Hover (Freehand)</td>
+      </tr>
+
+      <tr>
+        <td>TOGGLE (on/off) <span>'h'</span></td>
+        <td>Mouse Hover ("Hourglass")</td>
+      </tr>
+
+      <tr>
+        <td colspan="2">Toggle any colour to return to default Blue</td>
+      </tr>
+
+      <tr>
+        <td>'w'</td>
+        <td>Line Colour White</td>
+      </tr>
+
+      <tr>
+        <td>'r'</td>
+        <td>LIne Colour Red</td>
+      </tr>
+
+      <tr>
+        <td>'b'</td>
+        <td>Line Colour Black</td>
+      </tr>
+
+      <tr>
+        <td>'+' '-'</td>
+        <td>Increase/Decrease Line Thickness</td>
+      </tr>
+      
+    </table>
+
+      <button id="close-modal">Close</button>
+    </div>
+  </div>
+
 <!--  -->
 <!--  -->
 <!--  -->
@@ -80,5 +114,6 @@
     <script src="js/libs/p5.js" type="text/javascript"></script>
     <script src="js/libs/p5.dom.js" type="text/javascript"></script>
     <script src="js/draw.js" type="text/javascript"></script>
+    <script src="js/modal.js" type="text/javascript"></script>
   </body>
 </html>

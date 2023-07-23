@@ -14,9 +14,73 @@
   <a href="/">Text</a>
   <a href="/draw.html">Draw</a>
   <a href="/image.html">Image</a>
-  <a href="#info">Info</a>
+  <a href="#" id="info">Info</a>
 </nav>
 
+<div class="keycodes">
+    <p>
+    Tool keys:
+    <span>q</span>
+    <span>a</span>
+    <span>z</span>
+    <span>w</span>
+    <span>s</span>
+    <span>x</span>
+    <span>e</span>
+    </p>
+  </div>
+
+<div id="modal-container">
+    <div id="modal">
+      <h2>Draw with images</h2>
+      <table>
+      <tr>
+        <th>Tool/Key</th>
+        <th>Action</th>
+      </tr>
+      
+      <tr>
+        <td>TOGGLE drawing mode <span>'q'</span></td>
+        <td>Default no image loaded</td>
+      </tr>
+     
+      <tr>
+        <td>TOGGLE (on/off) <span>'a'</span></td>
+        <td>Mouse Hover (current loaded image)</td>
+      </tr>
+
+      <tr>
+        <td>TOGGLE (on/off) <span>'z'</span></td>
+        <td>Mouse Hover (current loaded image)</td>
+      </tr>
+
+      <tr>
+        <td>TOGGLE (on/off) <span>'w'</span></td>
+        <td>Mouse Hover (current loaded image)</td>
+      </tr>
+     
+      <tr>
+        <td>TOGGLE (on/off) <span>'s'</span></td>
+        <td>Mouse Hover (current loaded image)</td>
+      </tr>
+     
+      <tr>
+        <td>TOGGLE (on/off) <span>'x'</span></td>
+        <td>Mouse Hover (current loaded image)</td>
+      </tr>
+      
+      <tr>
+        <td>TOGGLE (on/off) <span>'e'</span></td>
+        <td>Mouse Hover (current loaded image)</td>
+      </tr>
+     
+      <tr>
+        <td colspan="2"><p>Single image draw/stamp: press image key (above) then press 'q' twice to toggle drawing on/off.</p></td>
+      </tr>      
+      </table>
+      <button id="close-modal">Close</button>
+    </div>
+  </div>
 
 <!--  -->
 <!--  -->
@@ -25,5 +89,6 @@
     <script src="js/libs/p5.js" type="text/javascript"></script>
     <script src="js/libs/p5.dom.js" type="text/javascript"></script>
     <script src="js/image.js" type="text/javascript"></script>
+    <script src="js/modal.js" type="text/javascript"></script>
   </body>
 </html>

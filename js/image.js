@@ -1,24 +1,23 @@
-let trans;
 let cov;
-let times;
-let vertical;
+let glitch;
 let smudge_pattern_black;
 let smudge_pattern_white;
-let glitch;
+let times;
+let trans;
+let vertical;
 
 let currentImage = null;
 let imageSize = 200; // Size of the images
 let drawEnabled = true; // Flag to enable/disable drawing
 
 function preload() {
-  trans = loadImage('../img/trans.png')
   cov = loadImage('../img/cov.png')
-  times  = loadImage('../img/times.png')
-  vertical  = loadImage('../img/vertical.png')
-  smudge_pattern_black  = loadImage('../img/smudge_pattern_black.png')
+  glitch  = loadImage('../img/glitch.png')
   smudge_pattern_black  = loadImage('../img/smudge_pattern_black.png')
   smudge_pattern_white  = loadImage('../img/smudge_pattern_white.png')
-  glitch  = loadImage('../img/glitch.png')
+  times  = loadImage('../img/times.png')
+  trans = loadImage('../img/trans.png')
+  vertical  = loadImage('../img/vertical.png')
 }
 
 function setup() {
