@@ -186,3 +186,12 @@ function keyPressed() {
     decreaseCount = 0.1; // Reset decreaseCount if any other key is pressed
   }
 }
+
+// resize on reload
+function reloadOnResize() {
+  setTimeout(() => {
+    location.reload();
+  }, 1000);
+}
+
+window.addEventListener('resize', reloadOnResize);

@@ -188,3 +188,11 @@ function handleClear() {
 }
 
 
+// resize on reload
+function reloadOnResize() {
+  setTimeout(() => {
+    location.reload();
+  }, 1000);
+}
+
+window.addEventListener('resize', reloadOnResize);

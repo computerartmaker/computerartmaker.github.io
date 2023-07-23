@@ -3,17 +3,42 @@
   padding: 0;
   overflow: hidden;
 }
-
+.hide-on-mobile{
+  visibility: hidden;
+}
+@media (min-width: 768px){
+  .hide-on-mobile {
+    visibility: visible;
+  }
+}
 .disclaimer{
   position: absolute;
-  right: 0;
-  top: 0;
+  right: 2px;
+  top: 2px;
+  height: 100%;
+}
+.tools-issue{
+  visibility: hidden;
+}
+@media (min-width: 1150px){
+  .tools-issue{
+    visibility: visible;
+    background: transparent; 
+    color: black; 
+    font-family: monospace;
+  }  
 }
 nav{
-  text-align: center;
+  margin-left: 40px;
   margin-top: 4px;
   padding-bottom: 5px;
   background-color: transparent;
+}
+@media (min-width: 580px){
+  nav{
+    margin-left: 0px;
+    text-align: center;
+  }  
 }
 nav a{
   color: black;
@@ -56,10 +81,11 @@ h3{
 
 .btn{
   position: fixed; 
-  top: 1px; 
-  left: 1px;
+  top: 2px; 
+  left: 2px;
   min-width: fit-content!important;
   padding: 1px 4px!important;
+  border-radius: 0;
   text-transform: uppercase;
 }
 .clearAll{
