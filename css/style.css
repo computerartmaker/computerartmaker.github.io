@@ -56,7 +56,10 @@ h3{
   padding: 1px 4px!important;
   text-transform: uppercase;
 }
-
+.clearAll{
+  background-color: #FF0000;
+  color: #fff;  
+}
 /* MODAL */
 #modal-container {
   display: none;
