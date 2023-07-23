@@ -7,7 +7,7 @@ let drawDotty = false;
 let drawFan = false;
 let drawShading = false;
 
-let strokeWidth = 0.1;
+let strokeWidth = 1;
 let strokeColor = "blue"; // Initial stroke color
 
 
