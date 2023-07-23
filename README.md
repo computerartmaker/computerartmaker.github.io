@@ -40,8 +40,3 @@
 
 
 
-```
-line(lineStartX, lineStartX, pmouseX, lineStartY);
-line(lineStartX, lineStartX, pmouseX, pmouseY);
-line(lineStartX, lineStartX, mouseX, mouseY);
-```
