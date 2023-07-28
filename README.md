@@ -22,7 +22,6 @@
 #todo
 - draw diagonal straight line
 
-
 `/image.html`
 ## Functionality (image)
 - press/toggle 'q' toggle drawing on/off (default no image loaded)
@@ -32,3 +31,6 @@
 - press/toggle 'z' change image
 - press/toggle 'x' change image
 - single image draw = press image key (above) then press q twice to toggle drawing on/off (not repeat).
+
+#todo
+- user upload image/s for painting
