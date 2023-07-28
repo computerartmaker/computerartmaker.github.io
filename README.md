@@ -1,3 +1,7 @@
+# Computer Art Maker
+
+![Preview](./preview.jpg)
+
 `/index.html`
 ## Functionality (text)
 - click anywhere on page to activate cursor and begin typing 
@@ -34,3 +38,4 @@
 
 #todo
 - user upload image/s for painting
+
