@@ -17,9 +17,10 @@
   top: 2px;
   height: 100%;
 }
-.tools-issue{
+.tools-issue, .desktop{
   visibility: hidden;
 }
+
 @media (min-width: 1150px){
   .tools-issue{
     visibility: visible;
@@ -27,9 +28,14 @@
     color: black; 
     font-family: monospace;
   }  
+  .desktop{ 
+    color: white; 
+    font-family: monospace;
+    visibility: visible;
+  }
 }
 nav{
-  margin-left: 40px;
+  margin-left: 80px;
   margin-top: 4px;
   padding-bottom: 5px;
   background-color: transparent;
