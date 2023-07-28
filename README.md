@@ -1,6 +1,6 @@
 # Computer Art Maker
 
-![Preview](./preview.jpg)
+![Preview](./preview.png)
 
 `/index.html`
 ## Functionality (text)
